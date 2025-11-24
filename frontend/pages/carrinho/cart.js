@@ -106,6 +106,15 @@
     // associar ouvintes
     lista.querySelectorAll('.qty-btn').forEach((btn) => btn.addEventListener('click', aoClicarQuantidade));
     lista.querySelectorAll('.remove-btn').forEach((btn) => btn.addEventListener('click', aoRemover));
+
+    // abrir modal ao finalizar compra
+    const btnFinalizar = resumo.querySelector('.btn-finalizar');
+    if (btnFinalizar) {
+      btnFinalizar.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        abrirModalCheckout();
+      });
+    }
   }
 
   function aoClicarQuantidade(e) {
@@ -132,5 +141,74 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     renderizarCarrinho();
+
+    // listeners do modal (existem no HTML)
+    const overlay = document.getElementById('modal-overlay');
+    const btnFechar = overlay && overlay.querySelector('.modal-fechar');
+    const btnCancelar = overlay && overlay.querySelector('.btn-cancelar');
+    const form = document.getElementById('form-checkout');
+    const btnFecharSucesso = document.getElementById('btn-fechar-sucesso');
+
+    if (btnFechar) btnFechar.addEventListener('click', fecharModalCheckout);
+    if (btnCancelar) btnCancelar.addEventListener('click', fecharModalCheckout);
+    if (btnFecharSucesso) btnFecharSucesso.addEventListener('click', function () {
+      fecharModalCheckout();
+    });
+    if (form) form.addEventListener('submit', tratarEnvioCheckout);
   });
 })();
+
+/* Funções do modal / checkout */
+function abrirModalCheckout() {
+  const overlay = document.getElementById('modal-overlay');
+  const form = document.getElementById('form-checkout');
+  const sucesso = document.getElementById('modal-sucesso');
+  if (!overlay || !form) return;
+  // reset form e estados
+  form.reset();
+  form.style.display = '';
+  if (sucesso) sucesso.style.display = 'none';
+  overlay.style.display = 'flex';
+  overlay.setAttribute('aria-hidden', 'false');
+  // focar no primeiro campo
+  const primeiro = form.querySelector('input'); if (primeiro) primeiro.focus();
+}
+
+function fecharModalCheckout() {
+  const overlay = document.getElementById('modal-overlay');
+  if (!overlay) return;
+  overlay.style.display = 'none';
+  overlay.setAttribute('aria-hidden', 'true');
+}
+
+function mostrarSucessoCheckout() {
+  const form = document.getElementById('form-checkout');
+  const sucesso = document.getElementById('modal-sucesso');
+  if (form) form.style.display = 'none';
+  if (sucesso) sucesso.style.display = '';
+}
+
+function tratarEnvioCheckout(e) {
+  e.preventDefault();
+  const form = e.currentTarget;
+  // validação simples
+  const nome = form.querySelector('#nome-cliente').value.trim();
+  const rua = form.querySelector('#rua').value.trim();
+  const cidade = form.querySelector('#cidade').value.trim();
+  const estado = form.querySelector('#estado').value.trim();
+  const cep = form.querySelector('#cep').value.trim();
+  if (!nome || !rua || !cidade || !estado || !cep) {
+    alert('Por favor preencha todos os campos obrigatórios do endereço.');
+    return;
+  }
+
+  // simula finalização: limpar carrinho, atualizar UI e mostrar sucesso
+  try {
+    localStorage.setItem('rb_cart', JSON.stringify([]));
+  } catch (err) {}
+  // atualizar badge e carrinho na página
+  try { if (typeof renderizarCarrinho === 'function') renderizarCarrinho(); } catch (err) { }
+  try { const badge = document.querySelector('.acoes-topo .badge'); if (badge) { badge.style.display='none'; badge.textContent='0'; } } catch (err) {}
+
+  mostrarSucessoCheckout();
+}

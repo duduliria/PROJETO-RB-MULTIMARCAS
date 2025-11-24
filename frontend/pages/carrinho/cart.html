@@ -57,6 +57,48 @@
         </div>
       </section>
     </main>
+    <!-- Modal de Checkout -->
+    <div id="modal-overlay" class="modal-overlay" aria-hidden="true" style="display:none">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+        <button class="modal-fechar" aria-label="Fechar">×</button>
+        <h2 id="modal-titulo">Finalizar Compra</h2>
+        <p class="modal-sub">Preencha seu endereço para concluir o pedido</p>
+
+        <form id="form-checkout" class="form-checkout">
+          <label for="nome-cliente">Nome completo</label>
+          <input id="nome-cliente" name="nome" type="text" required>
+
+          <label for="rua">Rua</label>
+          <input id="rua" name="rua" type="text" required>
+
+          <label for="numero">Número</label>
+          <input id="numero" name="numero" type="text">
+
+          <label for="complemento">Complemento</label>
+          <input id="complemento" name="complemento" type="text">
+
+          <label for="cidade">Cidade</label>
+          <input id="cidade" name="cidade" type="text" required>
+
+          <label for="estado">Estado</label>
+          <input id="estado" name="estado" type="text" required>
+
+          <label for="cep">CEP</label>
+          <input id="cep" name="cep" type="text" required>
+
+          <div class="modal-acoes">
+            <button type="button" class="btn-cancelar">Cancelar</button>
+            <button type="submit" class="btn-confirmar">Finalizar Pedido</button>
+          </div>
+        </form>
+
+        <div id="modal-sucesso" class="modal-sucesso" style="display:none">
+          <h3>Compra finalizada com sucesso!</h3>
+          <p>Seu pedido foi registrado. Obrigado pela compra.</p>
+          <button id="btn-fechar-sucesso" class="btn-confirmar">Fechar</button>
+        </div>
+      </div>
+    </div>
 
     <script src="cart.js"></script>
   </body>

@@ -272,6 +272,97 @@ body {
   text-decoration: none;
 }
 
+/* Modal checkout */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 12, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 90;
+}
+.modal {
+  width: 520px;
+  max-width: 94vw;
+  background: #fff;
+  border-radius: 10px;
+  padding: 22px 20px;
+  box-shadow: 0 24px 48px rgba(15, 15, 20, 0.18);
+  position: relative;
+}
+.modal h2 {
+  margin: 2px 0 8px;
+  font-size: 20px;
+}
+.modal-sub {
+  color: #7f7a83;
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+.modal-fechar {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+.form-checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-checkout label {
+  font-size: 13px;
+  color: #444;
+}
+.form-checkout input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #e9e9ee;
+  font-size: 14px;
+}
+.modal-acoes {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+.btn-confirmar {
+  background: #5729b0;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+.btn-cancelar {
+  background: #fff;
+  border: 1px solid #e6e2ea;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.modal-sucesso {
+  text-align: center;
+  padding: 16px;
+}
+.modal-sucesso h3 {
+  color: #2b2b2b;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 520px) {
+  .modal {
+    padding: 16px;
+  }
+  .modal h2 {
+    font-size: 18px;
+  }
+}
+
 /* Responsivo */
 @media (max-width: 800px) {
   .pagina {
