@@ -47,12 +47,17 @@
       <section id="produtos" class="produtos">
         <div class="produtos-cabecalho">
           <h2>Nossos Produtos</h2>
-          <div class="contador">6 produtos disponíveis</div>
+          <div class="produtos-controles">
+            <div class="contador" id="contadorProdutos">6 produtos disponíveis</div>
+            <select id="filtroCategoria" aria-label="Filtrar por categoria">
+              <option value="todas">Todas Categorias</option>
+            </select>
+          </div>
         </div>
 
         <div class="grade-produtos">
           <!-- Produto 1 -->
-          <article class="card-produto">
+          <article class="card-produto" data-category="Camisetas">
             <figure class="card-imagem" aria-hidden="true">
               <svg
                 viewBox="0 0 400 300"
@@ -96,7 +101,7 @@
           </article>
 
           <!-- Produto 2 -->
-          <article class="card-produto">
+          <article class="card-produto" data-category="Calças">
             <figure class="card-imagem" aria-hidden="true">
               <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" rx="12" fill="#f0f0f2" />
@@ -135,7 +140,7 @@
           </article>
 
           <!-- Produto 3 -->
-          <article class="card-produto">
+          <article class="card-produto" data-category="Jaquetas">
             <figure class="card-imagem" aria-hidden="true">
               <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" rx="12" fill="#f6f2f0" />
@@ -174,7 +179,7 @@
           </article>
 
           <!-- Produto 4 -->
-          <article class="card-produto">
+          <article class="card-produto" data-category="Vestidos">
             <figure class="card-imagem" aria-hidden="true">
               <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" rx="12" fill="#fff6f2" />
@@ -213,7 +218,7 @@
           </article>
 
           <!-- Produto 5 -->
-          <article class="card-produto">
+          <article class="card-produto" data-category="Tênis">
             <figure class="card-imagem" aria-hidden="true">
               <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" rx="12" fill="#eef7f2" />
@@ -252,7 +257,7 @@
           </article>
 
           <!-- Produto 6 -->
-          <article class="card-produto">
+          <article class="card-produto" data-category="Bolsas">
             <figure class="card-imagem" aria-hidden="true">
               <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" rx="12" fill="#f9f6ff" />

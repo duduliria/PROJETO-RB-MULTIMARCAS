@@ -57,5 +57,42 @@
         setTimeout(() => (botao.textContent = 'Adicionar ao Carrinho'), 900);
       });
     });
+    
+    // --- FILTRO DE CATEGORIAS ---
+    const select = document.getElementById('filtroCategoria');
+    const produtosCards = Array.from(document.querySelectorAll('.card-produto'));
+    const contadorEl = document.getElementById('contadorProdutos');
+
+    function atualizarContador(){
+      const visiveis = produtosCards.filter(c=>c.style.display!== 'none');
+      const n = visiveis.length;
+      contadorEl.textContent = `${n} produto${n!==1? 's' : ''} disponível${n!==1? 's' : ''}`;
+    }
+
+    // popular select com categorias únicas encontradas nos cards
+    const categorias = produtosCards.map(c=>c.dataset.category).filter(Boolean);
+    const unicas = [...new Set(categorias)];
+    unicas.forEach(cat=>{
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat;
+      select.appendChild(opt);
+    });
+
+    // evento para filtrar
+    select.addEventListener('change', ()=>{
+      const val = select.value;
+      produtosCards.forEach(card=>{
+        if(val==='todas' || card.dataset.category===val){
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      atualizarContador();
+    });
+
+    // inicializa contador corretamente
+    atualizarContador();
   });
 })();
