@@ -28,7 +28,23 @@
               >0</span
             >
           </a>
-          <button class="btn-icone" aria-label="perfil">👤</button>
+          <div class="opcoes-user">
+            <button class="btn-icone" aria-label="perfil">👤</button>
+            <!-- Menu do usuário (aparece apenas quando logado) -->
+            <div id="user-menu" class="user-menu">
+              <div style="padding: 12px; border-bottom: 1px solid #eee">
+                <div id="user-name" style="font-weight: 700; color: #111">
+                  Usuário
+                </div>
+                <div id="user-email" style="font-size: 13px; color: #666">
+                  email@exemplo.com
+                </div>
+              </div>
+              <div>
+                <button id="btn-logout">Sair</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -47,7 +63,9 @@
         <div class="produtos-cabecalho">
           <h2>Nossos Produtos</h2>
           <div class="produtos-controles">
-            <div class="contador" id="contadorProdutos">6 produtos disponíveis</div>
+            <div class="contador" id="contadorProdutos">
+              6 produtos disponíveis
+            </div>
             <select id="filtroCategoria" aria-label="Filtrar por categoria">
               <option value="todas">Todas Categorias</option>
             </select>

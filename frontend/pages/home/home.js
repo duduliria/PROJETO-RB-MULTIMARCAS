@@ -1,6 +1,6 @@
 /* Lógica do carrinho na página inicial (localStorage) */
 (function () {
-  const CHAVE_STORAGE = 'rb_cart';
+  const CHAVE_STORAGE = "rb_cart";
 
   function obterCarrinho() {
     try {
@@ -19,14 +19,14 @@
   }
 
   function atualizarBadge() {
-    const badge = document.querySelector('.acoes-topo .badge');
+    const badge = document.querySelector(".acoes-topo .badge");
     if (!badge) return;
     const total = obterQuantidadeTotal();
     if (total > 0) {
       badge.textContent = total;
-      badge.style.display = 'inline-block';
+      badge.style.display = "inline-block";
     } else {
-      badge.style.display = 'none';
+      badge.style.display = "none";
     }
   }
 
@@ -42,10 +42,10 @@
     atualizarBadge();
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     atualizarBadge();
-    document.querySelectorAll('.btn-adicionar').forEach((botao) => {
-      botao.addEventListener('click', (e) => {
+    document.querySelectorAll(".btn-adicionar").forEach((botao) => {
+      botao.addEventListener("click", (e) => {
         const el = e.currentTarget;
         const produto = {
           id: el.dataset.id,
@@ -53,40 +53,46 @@
           price: parseFloat(el.dataset.price),
         };
         adicionarAoCarrinho(produto);
-        botao.textContent = 'Adicionado ✓';
-        setTimeout(() => (botao.textContent = 'Adicionar ao Carrinho'), 900);
+        botao.textContent = "Adicionado ✓";
+        setTimeout(() => (botao.textContent = "Adicionar ao Carrinho"), 900);
       });
     });
-    
-    // --- FILTRO DE CATEGORIAS ---
-    const select = document.getElementById('filtroCategoria');
-    const produtosCards = Array.from(document.querySelectorAll('.card-produto'));
-    const contadorEl = document.getElementById('contadorProdutos');
 
-    function atualizarContador(){
-      const visiveis = produtosCards.filter(c=>c.style.display!== 'none');
+    // --- FILTRO DE CATEGORIAS ---
+    const select = document.getElementById("filtroCategoria");
+    const produtosCards = Array.from(
+      document.querySelectorAll(".card-produto")
+    );
+    const contadorEl = document.getElementById("contadorProdutos");
+
+    function atualizarContador() {
+      const visiveis = produtosCards.filter((c) => c.style.display !== "none");
       const n = visiveis.length;
-      contadorEl.textContent = `${n} produto${n!==1? 's' : ''} disponível${n!==1? 's' : ''}`;
+      contadorEl.textContent = `${n} produto${n !== 1 ? "s" : ""} disponível${
+        n !== 1 ? "s" : ""
+      }`;
     }
 
     // popular select com categorias únicas encontradas nos cards
-    const categorias = produtosCards.map(c=>c.dataset.category).filter(Boolean);
+    const categorias = produtosCards
+      .map((c) => c.dataset.category)
+      .filter(Boolean);
     const unicas = [...new Set(categorias)];
-    unicas.forEach(cat=>{
-      const opt = document.createElement('option');
+    unicas.forEach((cat) => {
+      const opt = document.createElement("option");
       opt.value = cat;
       opt.textContent = cat;
       select.appendChild(opt);
     });
 
     // evento para filtrar
-    select.addEventListener('change', ()=>{
+    select.addEventListener("change", () => {
       const val = select.value;
-      produtosCards.forEach(card=>{
-        if(val==='todas' || card.dataset.category===val){
-          card.style.display = '';
+      produtosCards.forEach((card) => {
+        if (val === "todas" || card.dataset.category === val) {
+          card.style.display = "";
         } else {
-          card.style.display = 'none';
+          card.style.display = "none";
         }
       });
       atualizarContador();
@@ -96,3 +102,60 @@
     atualizarContador();
   });
 })();
+
+// --- MENU DO USUÁRIO (MOSTRAR NOME E OPÇÃO SAIR) ---
+document.addEventListener("DOMContentLoaded", () => {
+  const perfilBtn = document.querySelector('.acoes-topo [aria-label="perfil"]');
+  const userMenu = document.getElementById("user-menu");
+  const USER_KEY = "rb_user";
+
+  function obterUsuario() {
+    try {
+      return JSON.parse(localStorage.getItem(USER_KEY));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  const usuario = obterUsuario();
+
+  if (usuario) {
+    // Preencher dados visíveis no menu
+    const nomeEl = document.getElementById("user-name");
+    const emailEl = document.getElementById("user-email");
+    if (nomeEl) nomeEl.textContent = usuario.nome || usuario.name || "Usuário";
+    if (emailEl) emailEl.textContent = usuario.email || "";
+
+    // Mostrar/ocultar menu ao clicar no ícone de perfil
+    if (perfilBtn) {
+      perfilBtn.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        if (!userMenu) return;
+        userMenu.style.display =
+          userMenu.style.display === "block" ? "none" : "block";
+      });
+    }
+
+    // Fechar ao clicar fora
+    document.addEventListener("click", () => {
+      if (userMenu) userMenu.style.display = "none";
+    });
+
+    // Logout
+    const logoutBtn = document.getElementById("btn-logout");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem(USER_KEY);
+        // Redireciona para a página de login
+        window.location.href = "../../index.html";
+      });
+    }
+  } else {
+    // Usuário não está logado: clicar no ícone leva ao login
+    if (perfilBtn) {
+      perfilBtn.addEventListener("click", () => {
+        window.location.href = "../../index.html";
+      });
+    }
+  }
+});

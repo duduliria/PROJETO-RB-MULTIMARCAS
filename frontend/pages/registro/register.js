@@ -109,7 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await resp.json();
       if (resp.status === 201) {
-        // Sucesso: redireciona para a home
+        try {
+          const usuarioParaSalvar = {
+            id: data.id || null,
+            nome: nome.value.trim(),
+            email: email.value.trim(),
+            tipo: "cliente",
+          };
+          localStorage.setItem("rb_user", JSON.stringify(usuarioParaSalvar));
+        } catch (e) {
+          console.warn("Não foi possível salvar usuário no localStorage", e);
+        }
         window.location.href = "../home/home.html";
         return;
       }

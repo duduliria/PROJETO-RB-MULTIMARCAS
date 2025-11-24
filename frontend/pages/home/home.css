@@ -30,6 +30,20 @@ a {
   border-bottom: 1px solid #f0eef1;
   z-index: 40;
 }
+
+.user-menu {
+  position: absolute;
+  right: 6px;
+  top: 40px;
+  display: none;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(15, 15, 20, 0.08);
+  min-width: 220px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
 .topo-conteudo {
   max-width: 1100px;
   margin: 0 auto;
@@ -37,6 +51,19 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
+}
+
+#btn-logout {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  color: #b00020;
+  cursor: pointer;
+}
+.opcoes-user {
+  position: relative;
 }
 .logo {
   display: flex;
