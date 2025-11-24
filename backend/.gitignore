@@ -1,0 +1,17 @@
+node_modules/
+npm-debug.log*
+.env
+.env.*
+.DS_Store
+dist/
+coverage/
+.vscode/
+.idea/
+/.pids
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+/.next
+/.parcel-cache
+/.cache
