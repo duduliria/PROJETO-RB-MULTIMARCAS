@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="cart.css">
+    <title>Carrinho - RB Multimarcas</title>
+  </head>
+  <body>
+
+    <header class="topo-fixo">
+      <div class="topo-conteudo">
+        <a class="logo" href="../../index.html" aria-label="RB Multimarcas">
+          <span class="logo-bolinha">RB</span>
+          <span class="logo-texto">RB Multimarcas</span>
+        </a>
+        <nav class="nav-principal">
+          <a href="../home/home.html">Home</a>
+          <a href="../home/home.html#produtos">Produtos</a>
+          <a href="#">Admin</a>
+        </nav>
+        <div class="acoes-topo">
+          <a href="cart.html" class="btn-icone" aria-label="carrinho">🛒</a>
+          <button class="btn-icone" aria-label="perfil">👤</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="pagina">
+      <div class="voltar"><a href="../home/home.html">← Voltar às compras</a></div>
+      <h1 class="titulo-pagina">Carrinho de Compras</h1>
+
+      <section class="cart-area">
+        <div class="cart-card">
+          <div class="cart-icone" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="3" y="7" width="18" height="13" rx="2" stroke="#6b6b75" stroke-width="1.2" fill="#f5f3f8"/>
+              <path d="M8 10h8" stroke="#6b6b75" stroke-width="1.2" stroke-linecap="round"/>
+              <rect x="9" y="3" width="6" height="4" rx="2" stroke="#6b6b75" stroke-width="1.2"/>
+            </svg>
+          </div>
+
+          <h2>Seu carrinho está vazio</h2>
+          <p class="cart-sub">Adicione produtos ao carrinho para continuar comprando</p>
+          <a class="btn-ver-produtos" href="../home/home.html">Ver Produtos</a>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
