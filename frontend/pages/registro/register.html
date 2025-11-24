@@ -18,40 +18,20 @@
 
         <form id="form-cadastro" autocomplete="on" novalidate>
           <label for="nome">Nome completo</label>
-          <input
-            id="nome"
-            name="nome"
-            type="text"
-            placeholder="Seu nome completo"
-            required
-          />
+          <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required />
+          <small class="msg-erro" aria-live="polite"></small>
 
           <label for="email">E-mail</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="seu@email.com"
-            required
-          />
+          <input id="email" name="email" type="email" placeholder="seu@email.com" required />
+          <small class="msg-erro" aria-live="polite"></small>
 
           <label for="senha">Senha</label>
-          <input
-            id="senha"
-            name="senha"
-            type="password"
-            placeholder="Digite uma senha"
-            required
-          />
+          <input id="senha" name="senha" type="password" placeholder="Digite uma senha" required />
+          <small class="msg-erro" aria-live="polite"></small>
 
           <label for="confirma-senha">Confirmar senha</label>
-          <input
-            id="confirma-senha"
-            name="confirma-senha"
-            type="password"
-            placeholder="Repita a senha"
-            required
-          />
+          <input id="confirma-senha" name="confirma-senha" type="password" placeholder="Repita a senha" required />
+          <small class="msg-erro" aria-live="polite"></small>
 
           <button type="submit" class="btn-cadastrar">Cadastrar</button>
         </form>
