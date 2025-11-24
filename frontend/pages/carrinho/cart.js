@@ -1,66 +1,66 @@
-/* Cart page logic: render items from localStorage and allow qty/remove */
-(function () {
-  const STORAGE_KEY = "rb_cart";
+ (function () {
+  const CHAVE_STORAGE = 'rb_cart';
 
-  function getCart() {
+  function obterCarrinho() {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch {
+      return JSON.parse(localStorage.getItem(CHAVE_STORAGE)) || [];
+    } catch (e) {
       return [];
     }
   }
-  function saveCart(cart) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+
+  function salvarCarrinho(carrinho) {
+    localStorage.setItem(CHAVE_STORAGE, JSON.stringify(carrinho));
   }
 
-  function formatMoney(v) {
-    return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  function formatarDinheiro(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
-  function updateHeaderBadge() {
-    const badge = document.querySelector(".acoes-topo .badge");
+  function atualizarBadgeCabecalho() {
+    const badge = document.querySelector('.acoes-topo .badge');
     if (!badge) return;
-    const count = getCart().reduce((s, i) => s + (i.qty || 0), 0);
-    if (count > 0) {
-      badge.textContent = count;
-      badge.style.display = "inline-flex";
-    } else badge.style.display = "none";
+    const total = obterCarrinho().reduce((s, i) => s + (i.qty || 0), 0);
+    if (total > 0) {
+      badge.textContent = total;
+      badge.style.display = 'inline-flex';
+    } else badge.style.display = 'none';
   }
 
-  function renderEmpty(show) {
-    const empty = document.getElementById("cart-empty");
-    const grid = document.getElementById("cart-grid");
-    if (show) {
-      empty.style.display = "";
-      grid.style.display = "none";
+  function renderizarVazio(mostrar) {
+    const vazio = document.getElementById('cart-empty');
+    const grade = document.getElementById('cart-grid');
+    if (mostrar) {
+      vazio.style.display = '';
+      grade.style.display = 'none';
     } else {
-      empty.style.display = "none";
-      grid.style.display = "flex";
+      vazio.style.display = 'none';
+      grade.style.display = 'flex';
     }
   }
 
-  function renderCart() {
-    const cart = getCart();
-    updateHeaderBadge();
-    if (!cart || cart.length === 0) {
-      renderEmpty(true);
+  function renderizarCarrinho() {
+    const carrinho = obterCarrinho();
+    atualizarBadgeCabecalho();
+    if (!carrinho || carrinho.length === 0) {
+      renderizarVazio(true);
       return;
     }
-    renderEmpty(false);
+    renderizarVazio(false);
 
-    const list = document.getElementById("cart-list");
-    const summary = document.getElementById("cart-summary");
-    list.innerHTML = "";
-    summary.innerHTML = "";
+    const lista = document.getElementById('cart-list');
+    const resumo = document.getElementById('cart-summary');
+    lista.innerHTML = '';
+    resumo.innerHTML = '';
 
     let total = 0;
-    cart.forEach((item) => {
+    carrinho.forEach((item) => {
       const subtotal = item.price * item.qty;
       total += subtotal;
 
-      const article = document.createElement("div");
-      article.className = "item-row";
-      article.innerHTML = `
+      const linha = document.createElement('div');
+      linha.className = 'item-row';
+      linha.innerHTML = `
         <div class="item-thumb">
           <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" rx="8" fill="#efeef2"/></svg>
         </div>
@@ -70,81 +70,67 @@
         </div>
         <div class="item-controls">
           <div class="item-qty">
-            <button class="qty-btn" data-action="minus" data-id="${
-              item.id
-            }">−</button>
+            <button class="qty-btn" data-action="minus" data-id="${item.id}">−</button>
             <div class="qty-value">${item.qty}</div>
-            <button class="qty-btn" data-action="plus" data-id="${
-              item.id
-            }">+</button>
+            <button class="qty-btn" data-action="plus" data-id="${item.id}">+</button>
           </div>
-          <button class="remove-btn" data-id="${
-            item.id
-          }" title="Remover">🗑️</button>
+          <button class="remove-btn" data-id="${item.id}" title="Remover">🗑️</button>
         </div>
         <div style="min-width:120px;text-align:right">
-          <div class="item-price">${formatMoney(subtotal)}</div>
+          <div class="item-price">${formatarDinheiro(subtotal)}</div>
           <div class="item-unit">R$ ${item.price.toFixed(2)} cada</div>
         </div>
       `;
-      list.appendChild(article);
+      lista.appendChild(linha);
     });
 
-    // summary
-    const summaryHtml = document.createElement("div");
-    summaryHtml.innerHTML = `
+    // resumo
+    const resumoHtml = document.createElement('div');
+    resumoHtml.innerHTML = `
       <h3>Resumo do Pedido</h3>
       <div class="resumo-itens"></div>
-      <div class="resumo-total"><span>Total</span><span>${formatMoney(
-        total
-      )}</span></div>
+      <div class="resumo-total"><span>Total</span><span>${formatarDinheiro(total)}</span></div>
       <a class="btn-finalizar" href="#">Finalizar Compra</a>
     `;
-    summary.appendChild(summaryHtml);
+    resumo.appendChild(resumoHtml);
 
-    // fill resumo-itens
-    const resumoItens = summary.querySelector(".resumo-itens");
-    getCart().forEach((i) => {
-      const row = document.createElement("div");
-      row.className = "resumo-linha";
-      row.innerHTML = `<span>${i.name} × ${i.qty}</span><span>${formatMoney(
-        i.price * i.qty
-      )}</span>`;
-      resumoItens.appendChild(row);
+    // preencher resumo-itens
+    const resumoItens = resumo.querySelector('.resumo-itens');
+    obterCarrinho().forEach((i) => {
+      const linha = document.createElement('div');
+      linha.className = 'resumo-linha';
+      linha.innerHTML = `<span>${i.name} × ${i.qty}</span><span>${formatarDinheiro(i.price * i.qty)}</span>`;
+      resumoItens.appendChild(linha);
     });
 
-    // attach listeners
-    list
-      .querySelectorAll(".qty-btn")
-      .forEach((btn) => btn.addEventListener("click", onQtyClick));
-    list
-      .querySelectorAll(".remove-btn")
-      .forEach((btn) => btn.addEventListener("click", onRemove));
+    // associar ouvintes
+    lista.querySelectorAll('.qty-btn').forEach((btn) => btn.addEventListener('click', aoClicarQuantidade));
+    lista.querySelectorAll('.remove-btn').forEach((btn) => btn.addEventListener('click', aoRemover));
   }
 
-  function onQtyClick(e) {
+  function aoClicarQuantidade(e) {
     const id = e.currentTarget.dataset.id;
-    const action = e.currentTarget.dataset.action;
-    const cart = getCart();
-    const item = cart.find((p) => p.id === id);
+    const acao = e.currentTarget.dataset.action;
+    const carrinho = obterCarrinho();
+    const item = carrinho.find((p) => p.id === id);
     if (!item) return;
-    if (action === "plus") item.qty++;
-    else if (action === "minus") {
+    if (acao === 'plus') item.qty++;
+    else if (acao === 'minus') {
       item.qty = Math.max(1, item.qty - 1);
     }
-    saveCart(cart);
-    renderCart();
+    salvarCarrinho(carrinho);
+    renderizarCarrinho();
   }
 
-  function onRemove(e) {
+  function aoRemover(e) {
     const id = e.currentTarget.dataset.id;
-    let cart = getCart();
-    cart = cart.filter((p) => p.id !== id);
-    saveCart(cart);
-    renderCart();
+    let carrinho = obterCarrinho();
+    carrinho = carrinho.filter((p) => p.id !== id);
+    salvarCarrinho(carrinho);
+    renderizarCarrinho();
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    renderCart();
+  document.addEventListener('DOMContentLoaded', () => {
+    renderizarCarrinho();
   });
 })();

@@ -1,59 +1,60 @@
-/* Home page cart logic (localStorage) */
-(() => {
-  const STORAGE_KEY = "rb_cart";
+/* Lógica do carrinho na página inicial (localStorage) */
+(function () {
+  const CHAVE_STORAGE = 'rb_cart';
 
-  function getCart() {
+  function obterCarrinho() {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch {
+      return JSON.parse(localStorage.getItem(CHAVE_STORAGE)) || [];
+    } catch (e) {
       return [];
     }
   }
-  function saveCart(cart) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+
+  function salvarCarrinho(carrinho) {
+    localStorage.setItem(CHAVE_STORAGE, JSON.stringify(carrinho));
   }
 
-  function getCount() {
-    return getCart().reduce((s, i) => s + (i.qty || 0), 0);
+  function obterQuantidadeTotal() {
+    return obterCarrinho().reduce((s, item) => s + (item.qty || 0), 0);
   }
 
-  function updateBadge() {
-    const badge = document.querySelector(".acoes-topo .badge");
+  function atualizarBadge() {
+    const badge = document.querySelector('.acoes-topo .badge');
     if (!badge) return;
-    const count = getCount();
-    if (count > 0) {
-      badge.textContent = count;
-      badge.style.display = "inline-block";
+    const total = obterQuantidadeTotal();
+    if (total > 0) {
+      badge.textContent = total;
+      badge.style.display = 'inline-block';
     } else {
-      badge.style.display = "none";
+      badge.style.display = 'none';
     }
   }
 
-  function addToCart(product) {
-    const cart = getCart();
-    const existing = cart.find((p) => p.id === product.id);
-    if (existing) {
-      existing.qty += 1;
+  function adicionarAoCarrinho(produto) {
+    const carrinho = obterCarrinho();
+    const existente = carrinho.find((p) => p.id === produto.id);
+    if (existente) {
+      existente.qty += 1;
     } else {
-      cart.push({ ...product, qty: 1 });
+      carrinho.push({ ...produto, qty: 1 });
     }
-    saveCart(cart);
-    updateBadge();
+    salvarCarrinho(carrinho);
+    atualizarBadge();
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    updateBadge();
-    document.querySelectorAll(".btn-adicionar").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
+  document.addEventListener('DOMContentLoaded', () => {
+    atualizarBadge();
+    document.querySelectorAll('.btn-adicionar').forEach((botao) => {
+      botao.addEventListener('click', (e) => {
         const el = e.currentTarget;
-        const prod = {
+        const produto = {
           id: el.dataset.id,
           name: el.dataset.name,
           price: parseFloat(el.dataset.price),
         };
-        addToCart(prod);
-        btn.textContent = "Adicionado ✓";
-        setTimeout(() => (btn.textContent = "Adicionar ao Carrinho"), 900);
+        adicionarAoCarrinho(produto);
+        botao.textContent = 'Adicionado ✓';
+        setTimeout(() => (botao.textContent = 'Adicionar ao Carrinho'), 900);
       });
     });
   });
