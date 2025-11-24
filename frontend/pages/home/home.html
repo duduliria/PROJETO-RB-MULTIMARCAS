@@ -1,143 +1,298 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="home.css">
-        <title>Loja - RB Multimarcas</title>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="home.css" />
+    <title>Loja - RB Multimarcas</title>
+  </head>
+  <body>
+    <header class="topo-fixo">
+      <div class="topo-conteudo">
+        <a class="logo" href="../../index.html" aria-label="RB Multimarcas">
+          <span class="logo-bolinha">RB</span>
+          <span class="logo-texto">RB Multimarcas</span>
+        </a>
+        <nav class="nav-principal">
+          <a href="#">Home</a>
+          <a href="#produtos">Produtos</a>
+          <a href="#admin">Admin</a>
+        </nav>
+        <div class="acoes-topo">
+          <a
+            href="../carrinho/cart.html"
+            class="btn-icone"
+            aria-label="carrinho"
+          >
+            <span class="icone-carrinho">🛒</span>
+            <span class="badge" aria-hidden="true" style="display: none"
+              >0</span
+            >
+          </a>
+          <button class="btn-icone" aria-label="perfil">👤</button>
+        </div>
+      </div>
+    </header>
 
-        <header class="topo-fixo">
-            <div class="topo-conteudo">
-                <a class="logo" href="../../index.html" aria-label="RB Multimarcas">
-                    <span class="logo-bolinha">RB</span>
-                    <span class="logo-texto">RB Multimarcas</span>
-                </a>
-                <nav class="nav-principal">
-                    <a href="#">Home</a>
-                    <a href="#produtos">Produtos</a>
-                    <a href="#admin">Admin</a>
-                </nav>
-                <div class="acoes-topo">
-                    <a href="../carrinho/cart.html" class="btn-icone" aria-label="carrinho">🛒</a>
-                    <button class="btn-icone" aria-label="perfil">👤</button>
-                </div>
+    <main class="pagina">
+      <section class="hero">
+        <h1>Vista-se com Estilo</h1>
+        <p>
+          Descubra nossa coleção exclusiva de roupas e acessórios para todas
+          <br />
+          as ocasiões
+        </p>
+      </section>
+
+      <section id="produtos" class="produtos">
+        <div class="produtos-cabecalho">
+          <h2>Nossos Produtos</h2>
+          <div class="contador">6 produtos disponíveis</div>
+        </div>
+
+        <div class="grade-produtos">
+          <!-- Produto 1 -->
+          <article class="card-produto">
+            <figure class="card-imagem" aria-hidden="true">
+              <svg
+                viewBox="0 0 400 300"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="imagem produto"
+              >
+                <rect width="100%" height="100%" rx="12" fill="#efeef2" />
+                <rect
+                  x="24"
+                  y="18"
+                  width="352"
+                  height="240"
+                  rx="8"
+                  fill="#dcd6e9"
+                />
+                <text
+                  x="50%"
+                  y="60%"
+                  fill="#7b6aa8"
+                  font-size="28"
+                  font-family="sans-serif"
+                  text-anchor="middle"
+                >
+                  Camiseta Básica
+                </text>
+              </svg>
+            </figure>
+            <div class="card-conteudo">
+              <h3 class="nome">Camiseta Básica Branca</h3>
+              <div class="preco">R$ 59,90</div>
+              <button
+                class="btn-adicionar"
+                data-id="p1"
+                data-name="Camiseta Básica Branca"
+                data-price="59.90"
+              >
+                Adicionar ao Carrinho
+              </button>
             </div>
-        </header>
+          </article>
 
-        <main class="pagina">
-            <section class="hero">
-                <h1>Vista-se com Estilo</h1>
-                <p>Descubra nossa coleção exclusiva de roupas e acessórios para todas <br> as ocasiões</p>
-            </section>
+          <!-- Produto 2 -->
+          <article class="card-produto">
+            <figure class="card-imagem" aria-hidden="true">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" rx="12" fill="#f0f0f2" />
+                <rect
+                  x="24"
+                  y="18"
+                  width="352"
+                  height="240"
+                  rx="8"
+                  fill="#cfdff0"
+                />
+                <text
+                  x="50%"
+                  y="60%"
+                  fill="#3b6fa8"
+                  font-size="28"
+                  font-family="sans-serif"
+                  text-anchor="middle"
+                >
+                  Calça Jeans
+                </text>
+              </svg>
+            </figure>
+            <div class="card-conteudo">
+              <h3 class="nome">Calça Jeans Azul</h3>
+              <div class="preco">R$ 189,90</div>
+              <button
+                class="btn-adicionar"
+                data-id="p2"
+                data-name="Calça Jeans Azul"
+                data-price="189.90"
+              >
+                Adicionar ao Carrinho
+              </button>
+            </div>
+          </article>
 
-            <section id="produtos" class="produtos">
-                <div class="produtos-cabecalho">
-                    <h2>Nossos Produtos</h2>
-                    <div class="contador">6 produtos disponíveis</div>
-                </div>
+          <!-- Produto 3 -->
+          <article class="card-produto">
+            <figure class="card-imagem" aria-hidden="true">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" rx="12" fill="#f6f2f0" />
+                <rect
+                  x="24"
+                  y="18"
+                  width="352"
+                  height="240"
+                  rx="8"
+                  fill="#d9d1c8"
+                />
+                <text
+                  x="50%"
+                  y="60%"
+                  fill="#2f2f2f"
+                  font-size="28"
+                  font-family="sans-serif"
+                  text-anchor="middle"
+                >
+                  Jaqueta Couro
+                </text>
+              </svg>
+            </figure>
+            <div class="card-conteudo">
+              <h3 class="nome">Jaqueta de Couro Preta</h3>
+              <div class="preco">R$ 349,90</div>
+              <button
+                class="btn-adicionar"
+                data-id="p3"
+                data-name="Jaqueta de Couro Preta"
+                data-price="349.90"
+              >
+                Adicionar ao Carrinho
+              </button>
+            </div>
+          </article>
 
-                <div class="grade-produtos">
-                    <!-- Produto 1 -->
-                    <article class="card-produto">
-                        <figure class="card-imagem" aria-hidden="true">
-                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="imagem produto">
-                                <rect width="100%" height="100%" rx="12" fill="#efeef2" />
-                                <rect x="24" y="18" width="352" height="240" rx="8" fill="#dcd6e9" />
-                                <text x="50%" y="60%" fill="#7b6aa8" font-size="28" font-family="sans-serif" text-anchor="middle">Camiseta Básica</text>
-                            </svg>
-                        </figure>
-                        <div class="card-conteudo">
-                            <h3 class="nome">Camiseta Básica Branca</h3>
-                            <div class="preco">R$ 59,90</div>
-                            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
+          <!-- Produto 4 -->
+          <article class="card-produto">
+            <figure class="card-imagem" aria-hidden="true">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" rx="12" fill="#fff6f2" />
+                <rect
+                  x="24"
+                  y="18"
+                  width="352"
+                  height="240"
+                  rx="8"
+                  fill="#f0d9d2"
+                />
+                <text
+                  x="50%"
+                  y="60%"
+                  fill="#9a4b3a"
+                  font-size="28"
+                  font-family="sans-serif"
+                  text-anchor="middle"
+                >
+                  Vestido Floral
+                </text>
+              </svg>
+            </figure>
+            <div class="card-conteudo">
+              <h3 class="nome">Vestido Floral de Verão</h3>
+              <div class="preco">R$ 149,90</div>
+              <button
+                class="btn-adicionar"
+                data-id="p4"
+                data-name="Vestido Floral de Verão"
+                data-price="149.90"
+              >
+                Adicionar ao Carrinho
+              </button>
+            </div>
+          </article>
 
-                    <!-- Produto 2 -->
-                    <article class="card-produto">
-                        <figure class="card-imagem" aria-hidden="true">
-                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="100%" height="100%" rx="12" fill="#f0f0f2" />
-                                <rect x="24" y="18" width="352" height="240" rx="8" fill="#cfdff0" />
-                                <text x="50%" y="60%" fill="#3b6fa8" font-size="28" font-family="sans-serif" text-anchor="middle">Calça Jeans</text>
-                            </svg>
-                        </figure>
-                        <div class="card-conteudo">
-                            <h3 class="nome">Calça Jeans Azul</h3>
-                            <div class="preco">R$ 189,90</div>
-                            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
+          <!-- Produto 5 -->
+          <article class="card-produto">
+            <figure class="card-imagem" aria-hidden="true">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" rx="12" fill="#eef7f2" />
+                <rect
+                  x="24"
+                  y="18"
+                  width="352"
+                  height="240"
+                  rx="8"
+                  fill="#d3eade"
+                />
+                <text
+                  x="50%"
+                  y="60%"
+                  fill="#2f7a5e"
+                  font-size="28"
+                  font-family="sans-serif"
+                  text-anchor="middle"
+                >
+                  Tênis Casual
+                </text>
+              </svg>
+            </figure>
+            <div class="card-conteudo">
+              <h3 class="nome">Tênis Casual Branco</h3>
+              <div class="preco">R$ 129,90</div>
+              <button
+                class="btn-adicionar"
+                data-id="p5"
+                data-name="Tênis Casual Branco"
+                data-price="129.90"
+              >
+                Adicionar ao Carrinho
+              </button>
+            </div>
+          </article>
 
-                    <!-- Produto 3 -->
-                    <article class="card-produto">
-                        <figure class="card-imagem" aria-hidden="true">
-                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="100%" height="100%" rx="12" fill="#f6f2f0" />
-                                <rect x="24" y="18" width="352" height="240" rx="8" fill="#d9d1c8" />
-                                <text x="50%" y="60%" fill="#2f2f2f" font-size="28" font-family="sans-serif" text-anchor="middle">Jaqueta Couro</text>
-                            </svg>
-                        </figure>
-                        <div class="card-conteudo">
-                            <h3 class="nome">Jaqueta de Couro Preta</h3>
-                            <div class="preco">R$ 349,90</div>
-                            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
+          <!-- Produto 6 -->
+          <article class="card-produto">
+            <figure class="card-imagem" aria-hidden="true">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" rx="12" fill="#f9f6ff" />
+                <rect
+                  x="24"
+                  y="18"
+                  width="352"
+                  height="240"
+                  rx="8"
+                  fill="#e0d6ff"
+                />
+                <text
+                  x="50%"
+                  y="60%"
+                  fill="#5b2db3"
+                  font-size="28"
+                  font-family="sans-serif"
+                  text-anchor="middle"
+                >
+                  Bolsa
+                </text>
+              </svg>
+            </figure>
+            <div class="card-conteudo">
+              <h3 class="nome">Bolsa de Mão</h3>
+              <div class="preco">R$ 199,90</div>
+              <button
+                class="btn-adicionar"
+                data-id="p6"
+                data-name="Bolsa de Mão"
+                data-price="199.90"
+              >
+                Adicionar ao Carrinho
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
 
-                    <!-- Produto 4 -->
-                    <article class="card-produto">
-                        <figure class="card-imagem" aria-hidden="true">
-                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="100%" height="100%" rx="12" fill="#fff6f2" />
-                                <rect x="24" y="18" width="352" height="240" rx="8" fill="#f0d9d2" />
-                                <text x="50%" y="60%" fill="#9a4b3a" font-size="28" font-family="sans-serif" text-anchor="middle">Vestido Floral</text>
-                            </svg>
-                        </figure>
-                        <div class="card-conteudo">
-                            <h3 class="nome">Vestido Floral de Verão</h3>
-                            <div class="preco">R$ 149,90</div>
-                            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-
-                    <!-- Produto 5 -->
-                    <article class="card-produto">
-                        <figure class="card-imagem" aria-hidden="true">
-                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="100%" height="100%" rx="12" fill="#eef7f2" />
-                                <rect x="24" y="18" width="352" height="240" rx="8" fill="#d3eade" />
-                                <text x="50%" y="60%" fill="#2f7a5e" font-size="28" font-family="sans-serif" text-anchor="middle">Tênis Casual</text>
-                            </svg>
-                        </figure>
-                        <div class="card-conteudo">
-                            <h3 class="nome">Tênis Casual Branco</h3>
-                            <div class="preco">R$ 129,90</div>
-                            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-
-                    <!-- Produto 6 -->
-                    <article class="card-produto">
-                        <figure class="card-imagem" aria-hidden="true">
-                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="100%" height="100%" rx="12" fill="#f9f6ff" />
-                                <rect x="24" y="18" width="352" height="240" rx="8" fill="#e0d6ff" />
-                                <text x="50%" y="60%" fill="#5b2db3" font-size="28" font-family="sans-serif" text-anchor="middle">Bolsa</text>
-                            </svg>
-                        </figure>
-                        <div class="card-conteudo">
-                            <h3 class="nome">Bolsa de Mão</h3>
-                            <div class="preco">R$ 199,90</div>
-                            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                </div>
-            </section>
-        </main>
-
-        <script src="home.js"></script>
-    </body>
+    <script src="home.js"></script>
+  </body>
 </html>

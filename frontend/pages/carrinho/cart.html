@@ -31,7 +31,8 @@
       <h1 class="titulo-pagina">Carrinho de Compras</h1>
 
       <section class="cart-area">
-        <div class="cart-card">
+        <!-- empty state card (shown when cart is empty) -->
+        <div class="cart-card cart-empty" id="cart-empty">
           <div class="cart-icone" aria-hidden="true">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <rect x="3" y="7" width="18" height="13" rx="2" stroke="#6b6b75" stroke-width="1.2" fill="#f5f3f8"/>
@@ -44,8 +45,19 @@
           <p class="cart-sub">Adicione produtos ao carrinho para continuar comprando</p>
           <a class="btn-ver-produtos" href="../home/home.html">Ver Produtos</a>
         </div>
+
+        <!-- populated cart layout (hidden when empty) -->
+        <div class="cart-grid" id="cart-grid" style="display:none">
+          <div class="cart-list" id="cart-list">
+            <!-- itens serão inseridos aqui via JS -->
+          </div>
+          <aside class="cart-summary" id="cart-summary">
+            <!-- resumo será inserido aqui via JS -->
+          </aside>
+        </div>
       </section>
     </main>
 
+    <script src="cart.js"></script>
   </body>
 </html>
