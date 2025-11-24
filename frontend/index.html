@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,29 @@
     <title>Login - RB Multimarcas</title>
 </head>
 <body>
-    
+    <main class="conteudo">
+        <section id="cartao-login" aria-labelledby="titulo-cartao">
+            <div class="icone-circulo" role="img" aria-label="ícone de bolsa">
+                👜
+            </div>
+
+            <h1 id="titulo-cartao">RB Multimarcas</h1>
+            <p class="subtitulo">Entre para acessar sua conta</p>
+
+            <form id="form-login" autocomplete="on" novalidate>
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="seu@email.com" required>
+
+                <label for="senha">Senha</label>
+                <input id="senha" name="senha" type="password" placeholder="Digite sua senha" required>
+
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+
+            <p class="cadastro-texto">Não tem uma conta? <a href="#" class="link-cadastro">Cadastre-se</a></p>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
