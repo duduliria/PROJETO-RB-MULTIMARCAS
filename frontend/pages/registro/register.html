@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="register.css" />
+    <title>RB Multimarcas - Cadastro</title>
+  </head>
+  <body>
+    <main class="conteudo-pagina">
+      <section id="cartao-cadastro" aria-labelledby="titulo-cadastro">
+        <div class="icone-circulo" role="img" aria-label="ícone de bolsa">
+          👜
+        </div>
+
+        <h1 id="titulo-cadastro">Criar conta</h1>
+        <p class="subtitulo">Preencha os dados abaixo para criar sua conta</p>
+
+        <form id="form-cadastro" autocomplete="on" novalidate>
+          <label for="nome">Nome completo</label>
+          <input
+            id="nome"
+            name="nome"
+            type="text"
+            placeholder="Seu nome completo"
+            required
+          />
+
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="seu@email.com"
+            required
+          />
+
+          <label for="senha">Senha</label>
+          <input
+            id="senha"
+            name="senha"
+            type="password"
+            placeholder="Digite uma senha"
+            required
+          />
+
+          <label for="confirma-senha">Confirmar senha</label>
+          <input
+            id="confirma-senha"
+            name="confirma-senha"
+            type="password"
+            placeholder="Repita a senha"
+            required
+          />
+
+          <button type="submit" class="btn-cadastrar">Cadastrar</button>
+        </form>
+
+        <p class="texto-login">
+          Já tem uma conta?
+          <a href="../../index.html" class="link-login">Faça login</a>
+        </p>
+      </section>
+    </main>
+
+    <script src="register.js"></script>
+  </body>
+</html>
