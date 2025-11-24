@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Painel Administrativo - Fashion Store</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="topo-conteudo">
+        <div class="brand">
+          <div class="logo">RB</div>
+          <div class="brand-name">RB - Multimarcas</div>
+        </div>
+        <div class="nav">
+          <nav class="top-nav">
+            <a href="/frontend/pages/home/home.html">Home</a>
+            <a href="/frontend/pages/home/home.html">Produtos</a>
+            <a class="active" href="#">Admin</a>
+          </nav>
+          <div class="icon">👤</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Painel Administrativo</h1>
+      <p class="subtitle">Gerencie clientes, produtos e pedidos</p>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-target="clientes">👥 Usuarios</button>
+        <button class="tab" data-target="produtos">📦 Produtos</button>
+        <button class="tab" data-target="pedidos">🧾 Pedidos</button>
+      </div>
+
+      <section class="card" id="clientesSection">
+        <div class="card-header">
+          <div>
+            <h2>Usuários</h2>
+            <p class="muted">Gerencie os usuários cadastrados no sistema</p>
+          </div>
+          <button class="primary" id="novoCliente">+ Novo Usuario</button>
+        </div>
+
+        <div class="card-body">
+          <table class="table" id="clientesTable">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Tipo</th>
+                <th>Pedidos</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card hidden" id="produtosSection">
+        <div class="card-header">
+          <div>
+            <h2>Produtos</h2>
+            <p class="muted">Adicione, edite ou remova produtos do catálogo</p>
+          </div>
+          <button class="primary" id="novoProduto">+ Novo Produto</button>
+        </div>
+
+        <div class="card-body">
+          <table class="table" id="produtosTable">
+            <thead>
+              <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card hidden" id="pedidosSection">
+        <div class="card-header">
+          <div>
+            <h2>Pedidos dos Clientes</h2>
+            <p class="muted">
+              Visualize e gerencie todos os pedidos realizados
+            </p>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <table class="table" id="pedidosTable">
+            <thead>
+              <tr>
+                <th>Pedido</th>
+                <th>Cliente</th>
+                <th>Itens</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
