@@ -1,3 +1,18 @@
+// Proteção de rota: se não houver usuário logado em localStorage, redireciona para login
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const usuario = JSON.parse(localStorage.getItem('rb_user'));
+    if (!usuario) {
+      // Não está logado -> volta para a tela de login
+      window.location.href = '../../index.html';
+      return;
+    }
+  } catch (e) {
+    window.location.href = '../../index.html';
+    return;
+  }
+});
+
 /* Lógica do carrinho na página inicial (localStorage) */
 (function () {
   const CHAVE_STORAGE = "rb_cart";
